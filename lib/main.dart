@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:radhey_knit_llp/splashScreen.dart';
-import 'branches.dart';
-import 'homePage.dart';
-import 'loginPage.dart';
+import 'package:radhey_knit_llp/screens/splashScreen.dart';
+import 'screens/branches.dart';
+import 'screens/homePage.dart';
+import 'screens/loginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Anapurna Sales',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF4A52)),
         useMaterial3: true,
