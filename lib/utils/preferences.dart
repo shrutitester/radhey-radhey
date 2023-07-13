@@ -21,6 +21,7 @@ class AppPreferences {
     prefs.setString(StringConstants.email, email);
     prefs.setString(StringConstants.userId, id);
     prefs.setString(StringConstants.isLogin, id);
+    prefs.setString(StringConstants.mobile, mobile);
   }
 
   setBooleanPreference(String key, bool value) async {
@@ -46,6 +47,13 @@ class AppPreferences {
     String ID = prefs.getString(StringConstants.name) ?? '';
 
     return ID;
+  }
+
+  Future<String> getMobile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String Mobile = prefs.getString(StringConstants.mobile) ?? '';
+
+    return Mobile;
   }
 
   Future<bool> getBoolPreference(String key) async {

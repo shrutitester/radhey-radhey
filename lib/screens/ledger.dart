@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../component/roundButton.dart';
+import '../constants/colorConstants.dart';
+import '../constants/stringConstant.dart';
 import 'salesReport.dart';
 
 class Ledger extends StatefulWidget {
@@ -37,10 +40,10 @@ class _LedgerState extends State<Ledger> {
           ),
         ),
         title: const Text(
-          'Ledger',
+          StringConstants.ledger,
           style: TextStyle(fontSize: 22, color: Colors.white),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 14.0),
@@ -63,11 +66,11 @@ class _LedgerState extends State<Ledger> {
                           child: Scaffold(
                             appBar: AppBar(
                               title: const Text(
-                                'Filter',
+                                StringConstants.filter,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 14),
                               ),
-                              backgroundColor: Colors.red,
+                              backgroundColor: ColorConstants.primaryColor,
                               actions: [
                                 IconButton(
                                     onPressed: () {
@@ -88,7 +91,8 @@ class _LedgerState extends State<Ledger> {
                                     children: [
                                       Expanded(
                                         child: RadioListTile(
-                                            title: const Text('All'),
+                                            title:
+                                                const Text(StringConstants.all),
                                             value: 'all',
                                             groupValue: scheme,
                                             onChanged: (value) {
@@ -99,7 +103,8 @@ class _LedgerState extends State<Ledger> {
                                       ),
                                       Expanded(
                                         child: RadioListTile(
-                                            title: const Text('Tick'),
+                                            title: const Text(
+                                                StringConstants.tick),
                                             value: 'tick',
                                             groupValue: scheme,
                                             onChanged: (value) {
@@ -110,7 +115,8 @@ class _LedgerState extends State<Ledger> {
                                       ),
                                       Expanded(
                                         child: RadioListTile(
-                                            title: const Text('Untick'),
+                                            title: const Text(
+                                                StringConstants.untick),
                                             value: 'untick',
                                             groupValue: scheme,
                                             onChanged: (value) {
@@ -135,7 +141,7 @@ class _LedgerState extends State<Ledger> {
                                           },
                                           decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
-                                            labelText: 'Date From',
+                                            labelText: StringConstants.dateFrom,
                                             suffixIcon: Icon(
                                                 Icons.calendar_today_outlined),
                                           ),
@@ -175,7 +181,7 @@ class _LedgerState extends State<Ledger> {
                                           },
                                           decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
-                                            labelText: 'Date To',
+                                            labelText: StringConstants.dateTo,
                                             suffixIcon: Icon(
                                                 Icons.calendar_today_outlined),
                                           ),
@@ -206,33 +212,43 @@ class _LedgerState extends State<Ledger> {
                                     height: 20,
                                   ),
                                   SizedBox(
-                                    height: 50,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                          foregroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.white),
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  const Color(0xFFFF4A52)),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  side: const BorderSide(
-                                                      color: Colors.red)))),
-                                      onPressed: () {
-                                        // Navigator.push(context,
-                                        //     MaterialPageRoute(builder:
-                                        //         (BuildContext context) {
-                                        //   return const SalesReport();
-                                        // }));
-                                      },
-                                      child: const Text('Submit'),
-                                    ),
-                                  )
+                                      height: 50,
+                                      width: MediaQuery.of(context).size.width,
+                                      child: RoundedButton(
+                                          text: StringConstants.next,
+                                          btnColor: ColorConstants.primaryColor,
+                                          btnWidth: 300,
+                                          press: () {
+                                            // Navigator.push(context, MaterialPageRoute(
+                                            // builder: (BuildContext context) {
+                                            // return const OrderNewEntry();
+                                            // }));
+                                          })
+                                      // ElevatedButton(
+                                      //   style: ButtonStyle(
+                                      //       foregroundColor:
+                                      //           MaterialStateProperty.all<Color>(
+                                      //               Colors.white),
+                                      //       backgroundColor:
+                                      //           MaterialStateProperty.all<Color>(
+                                      //               const Color(0xFFFF4A52)),
+                                      //       shape: MaterialStateProperty.all<
+                                      //               RoundedRectangleBorder>(
+                                      //           RoundedRectangleBorder(
+                                      //               borderRadius:
+                                      //                   BorderRadius.circular(5),
+                                      //               side: const BorderSide(
+                                      //                   color: Colors.red)))),
+                                      //   onPressed: () {
+                                      //     // Navigator.push(context,
+                                      //     //     MaterialPageRoute(builder:
+                                      //     //         (BuildContext context) {
+                                      //     //   return const SalesReport();
+                                      //     // }));
+                                      //   },
+                                      //   child: const Text('Submit'),
+                                      // ),
+                                      )
                                 ],
                               ),
                             ),

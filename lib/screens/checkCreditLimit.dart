@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'ledger.dart';
+import '../component/roundButton.dart';
+import '../component/roundInputField.dart';
+import '../constants/colorConstants.dart';
+import '../constants/stringConstant.dart';
 
 class CheckCreditLimit extends StatefulWidget {
   const CheckCreditLimit({super.key});
@@ -28,10 +31,10 @@ class _CheckCreditLimitState extends State<CheckCreditLimit> {
           ),
         ),
         title: const Text(
-          'Check Credit Limit',
+          StringConstants.checkCreditLimit,
           style: TextStyle(fontSize: 22, color: Colors.white),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 17, top: 16, right: 15.0),
@@ -42,36 +45,34 @@ class _CheckCreditLimitState extends State<CheckCreditLimit> {
               child: ListView(
                 children: [
                   const Text(
-                    'Customer',
+                    StringConstants.customer,
                     style: TextStyle(fontSize: 12),
                   ),
-                  const SizedBox(height: 8,),
+                  const SizedBox(
+                    height: 8,
+                  ),
                   Container(
                     height: 50,
                     width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: 16,right: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black,
-                            width: 1),
-                        borderRadius:
-                        BorderRadius.circular(5)
-                    ),
+                        border: Border.all(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(5)),
                     child: DropdownButton<String>(
-                        icon: Icon(Icons.keyboard_arrow_down),
+                        icon: const Icon(Icons.keyboard_arrow_down),
                         iconSize: 36,
                         isExpanded: true,
-                        underline: SizedBox(),
+                        underline: const SizedBox(),
                         value: _chosenValue,
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                         items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                            .map<DropdownMenuItem<String>>(
-                                (String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                        hint: Text('Select Customer',
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        hint: const Text('Select Customer',
                             style: TextStyle(
                               fontSize: 16,
                             )),
@@ -81,48 +82,33 @@ class _CheckCreditLimitState extends State<CheckCreditLimit> {
                           });
                         }),
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    'Balance',
+                    StringConstants.balance,
                     style: TextStyle(fontSize: 12),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
+                  RoundedInputField(
+                    keyboardType: TextInputType.number,
+                    type: StringConstants.username,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    'Credit Limit',
+                    StringConstants.creditLimit,
                     style: TextStyle(fontSize: 12),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
+                  RoundedInputField(
+                    keyboardType: TextInputType.phone,
+                    type: StringConstants.username,
                   ),
                 ],
               ),
@@ -130,34 +116,44 @@ class _CheckCreditLimitState extends State<CheckCreditLimit> {
             Positioned(
                 bottom: 29,
                 child: SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFFFF4A52)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                    side:
-                                        const BorderSide(color: Colors.red)))),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (BuildContext context) {
-                        //   return const Ledger();
-                        // }));
-                      }
-                    },
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                ))
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    child: RoundedButton(
+                        text: StringConstants.next,
+                        btnColor: ColorConstants.primaryColor,
+                        btnWidth: 300,
+                        press: () {
+                          // Navigator.push(context, MaterialPageRoute(
+                          //     builder: (BuildContext context) {
+                          //       return const OrderNewEntry();
+                          //     }));
+                        })
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //       foregroundColor:
+                    //           MaterialStateProperty.all<Color>(Colors.white),
+                    //       backgroundColor: MaterialStateProperty.all<Color>(
+                    //           const Color(0xFFFF4A52)),
+                    //       shape:
+                    //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //               RoundedRectangleBorder(
+                    //                   borderRadius: BorderRadius.circular(5),
+                    //                   side:
+                    //                       const BorderSide(color: Colors.red)))),
+                    //   onPressed: () {
+                    //     if (_formKey.currentState!.validate()) {
+                    //       // Navigator.push(context,
+                    //       //     MaterialPageRoute(builder: (BuildContext context) {
+                    //       //   return const Ledger();
+                    //       // }));
+                    //     }
+                    //   },
+                    //   child: const Text(
+                    //     'Submit',
+                    //     style: TextStyle(fontSize: 18),
+                    //   ),
+                    // ),
+                    ))
           ],
         ),
       ),

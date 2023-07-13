@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:radhey_knit_llp/component/roundButton.dart';
 import 'package:radhey_knit_llp/screens/homePage.dart';
+import 'package:radhey_knit_llp/articleWise.dart';
 
-import '../component/roundButton.dart';
 import '../component/roundInputField.dart';
 import '../constants/colorConstants.dart';
 import '../constants/stringConstant.dart';
-import 'complain.dart';
 
 class OrderNewEntry extends StatefulWidget {
   const OrderNewEntry({super.key});
@@ -21,6 +21,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
   String? scheme;
   String? loose;
   bool value = false;
+  bool _value = false;
   TextEditingController dateinput = TextEditingController();
   TextEditingController dateinput1 = TextEditingController();
   FilePickerResult? result;
@@ -35,10 +36,12 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
   TextEditingController marksController = TextEditingController();
   TextEditingController pcsController = TextEditingController();
   TextEditingController amountController = TextEditingController();
-  // TextEditingController caseController = TextEditingController();
-  // TextEditingController caseController = TextEditingController();
-  // TextEditingController caseController = TextEditingController();
-
+  TextEditingController designController = TextEditingController();
+  TextEditingController sizeController = TextEditingController();
+  TextEditingController colorController = TextEditingController();
+  TextEditingController rateController = TextEditingController();
+  // TextEditingController Controller = TextEditingController();
+  List<ArticleWise> article = [];
 
   @override
   void initState() {
@@ -49,9 +52,15 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
 
   @override
   Widget build(BuildContext context) {
+
+    // void addArticleData(ArticleWise articlewise){
+    //   setState(() {
+    //     article.add(articlewise);
+    //   });
+    // }
     return Scaffold(
       key: _globalKey,
-      backgroundColor: Colors.red,
+      backgroundColor: ColorConstants.primaryColor,
       body: Stack(
         children: [
           Column(
@@ -73,7 +82,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                       width: 10,
                     ),
                     const Text(
-                      'Order New Entry',
+                      StringConstants.orderNewEntry,
                       style: TextStyle(color: Colors.white, fontSize: 22),
                     )
                   ],
@@ -87,7 +96,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
               right: 0,
               bottom: 0,
               child: Container(
-                padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
+                padding: const EdgeInsets.only(top: 40, left: 16, right: 16,bottom: 40),
                 height: 220,
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -102,29 +111,25 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: const EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue1,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Prefix',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectPrefix,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -134,33 +139,31 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
-                      SizedBox(height: 42,),
+                      const SizedBox(
+                        height: 42,
+                      ),
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue2,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Customer',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectCustomer,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -170,33 +173,31 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
-                      SizedBox(height: 42,),
+                      const SizedBox(
+                        height: 42,
+                      ),
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue3,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Supplier',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectSupplier,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -206,33 +207,31 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
-                      SizedBox(height: 42,),
+                      const SizedBox(
+                        height: 42,
+                      ),
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue4,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Brand',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectBrand,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -242,33 +241,31 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
-                      SizedBox(height: 42,),
+                      const SizedBox(
+                        height: 42,
+                      ),
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue5,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Branch',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectBranch,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -278,86 +275,92 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
-                      SizedBox(height: 20,),
-                      Row(
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                              flex: 5,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Scheme'),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: RadioListTile(
-                                            title: Text('Yes',style: TextStyle(fontSize: 14),),
-                                            value: 'yes',
-                                            groupValue: scheme,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                scheme = value.toString();
-                                              });
-                                            }),
+                          const Text(StringConstants.scheme,style: TextStyle(),),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: RadioListTile(
+                                    title: const Text(
+                                      StringConstants.yes,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    value: 'yes',
+                                    groupValue: scheme,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        scheme = value.toString();
+                                      });
+                                    }),
+                              ),
+                              Expanded(
+                                  child: RadioListTile(
+                                      title: const Text(
+                                        StringConstants.no,
+                                        style: TextStyle(fontSize: 14),
                                       ),
-                                      Expanded(
-                                        flex: 1,
-                                          child: RadioListTile(
-                                              title: Text('No',style: TextStyle(fontSize: 14),),
-                                              value: 'no',
-                                              groupValue: scheme,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  scheme = value.toString();
-                                                });
-                                              })),
-                                    ],
-                                  ),
-                                ],
-                              )),
-                          SizedBox(width: 2,),
-                          Expanded(
-                              flex: 5,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Loose'),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: RadioListTile(
-                                            title: Text('Yes',style: TextStyle(fontSize: 14),),
-                                            value: 'yes',
-                                            groupValue: loose,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                loose = value.toString();
-                                              });
-                                            }),
+                                      value: 'no',
+                                      groupValue: scheme,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          scheme = value.toString();
+                                        });
+                                      })),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(StringConstants.loose),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: RadioListTile(
+                                    title: const Text(
+                                      StringConstants.yes,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    value: 'yes',
+                                    groupValue: loose,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        loose = value.toString();
+                                      });
+                                    }),
+                              ),
+                              Expanded(
+                                  child: RadioListTile(
+                                      title: Text(
+                                        StringConstants.no,
+                                        style: TextStyle(fontSize: 14),
                                       ),
-                                      Expanded(
-                                        flex: 1,
-                                          child: RadioListTile(
-                                              title: Text('No',style: TextStyle(fontSize: 14),),
-                                              value: 'no',
-                                              groupValue: loose,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  loose = value.toString();
-                                                });
-                                              }))
-                                    ],
-                                  )
-                                ],
-                              )),
+                                      value: 'no',
+                                      groupValue: loose,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          loose = value.toString();
+                                        });
+                                      }))
+                            ],
+                          )
                         ],
                       ),
                       Row(
                         children: [
-                          Text('Billing'),
-                          SizedBox(
+                          const Text(StringConstants.billing),
+                          const SizedBox(
                             width: 10,
                           ),
                           Checkbox(
@@ -369,6 +372,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               }),
                         ],
                       ),
+                      SizedBox(height: 43,),
                       TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -376,11 +380,10 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                           }
                           return null;
                         },
-
                         controller: dateinput,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Enter Date',
+                          labelText: StringConstants.enterDate,
                           suffixIcon: Icon(Icons.calendar_today_outlined),
                         ),
                         readOnly: true,
@@ -397,12 +400,12 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               dateinput.text = formattedDate;
                             });
                           } else {
-                            print('Date is not selected');
+                            const Text('Date is not selected');
                           }
                         },
                       ),
-                      SizedBox(
-                        height: 42,
+                      const SizedBox(
+                        height: 40,
                       ),
                       TextFormField(
                         validator: (value) {
@@ -411,11 +414,10 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                           }
                           return null;
                         },
-
                         controller: dateinput1,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Enter Due Date',
+                          labelText: StringConstants.enterDueDate,
                           suffixIcon: Icon(Icons.calendar_today_outlined),
                         ),
                         readOnly: true,
@@ -432,85 +434,92 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               dateinput1.text = formattedDate;
                             });
                           } else {
-                            print('Date is not selected');
+                            Text('Date is not selected');
                           }
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 42,
                       ),
 
                       Row(
                         children: [
                           Expanded(
-                              flex: 5, child:                 RoundedInputField(
-                            hintText: 'Enter Case',
-                            keyboardType: TextInputType.name,
-                            type: StringConstants.name,
+                            flex: 5,
+                            child: RoundedInputField(
+                              label: StringConstants.enterCase,
+                              hintText: StringConstants.enterCase,
+                              keyboardType: TextInputType.name,
+                              type: StringConstants.username,
+                            ),
                           ),
-                          ),
-                          SizedBox(
+                          const SizedBox(
                             width: 15,
                           ),
                           Expanded(
                             flex: 5,
                             child: RoundedInputField(
-                              hintText: 'Enter Marks',
+                              label: StringConstants.enterMarks,
+                              hintText: StringConstants.enterMarks,
                               keyboardType: TextInputType.name,
-                              type: StringConstants.name,
+                              type: StringConstants.username,
                             ),
                           ),
                         ],
                       ),
+SizedBox(height: 42,),
                       Row(
                         children: [
-                          Expanded(flex: 5, child: RoundedInputField(
-                            hintText: 'Enter Pcs',
-                            maxLength: 10,
-                            keyboardType: TextInputType.number,
-                            type: StringConstants.packer,
-                          ),),
-                          SizedBox(
+                          Expanded(
+                            flex: 5,
+                            child: RoundedInputField(
+                              label: StringConstants.enterPcs,
+                              hintText: StringConstants.enterPcs,
+                              keyboardType: TextInputType.number,
+                              type: StringConstants.username,
+                            ),
+                          ),
+                          const SizedBox(
                             width: 15,
                           ),
                           Expanded(
                             flex: 5,
                             child: RoundedInputField(
-                              hintText: 'Enter Register Phone Number',
+                              label: StringConstants.enterRegisterPhone,
+                              hintText: StringConstants.enterRegisterPhone,
                               maxLength: 10,
+                              counterText: '',
                               keyboardType: TextInputType.number,
-                              type: StringConstants.enterQty,
+                              type: StringConstants.mobile,
                             ),
                           ),
                         ],
                       ),
-
+                      const SizedBox(
+                        height: 42,
+                      ),
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.only(left: 16,right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black,
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(5)
-                        ),
+                            border: Border.all(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(5)),
                         child: DropdownButton<String>(
-                            icon: Icon(Icons.keyboard_arrow_down),
+                            icon: const Icon(Icons.keyboard_arrow_down),
                             iconSize: 36,
                             isExpanded: true,
-                            underline: SizedBox(),
+                            underline: const SizedBox(),
                             value: _chosenValue,
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                            hint: Text('Select Method',
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            hint: const Text(StringConstants.selectMethod,
                                 style: TextStyle(
                                   fontSize: 16,
                                 )),
@@ -520,15 +529,44 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }),
                       ),
+                      const SizedBox(
+                        height: 42,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: RoundedInputField(
+                              label: StringConstants.bookingStation,
+                              hintText: StringConstants.bookingStation,
+                              keyboardType: TextInputType.name,
+                              type: StringConstants.username,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Expanded(
+                            flex: 5,
+                            child: RoundedInputField(
+                              label: StringConstants.givenBy,
+                              hintText: StringConstants.givenBy,
+                              keyboardType: TextInputType.name,
+                              type: StringConstants.username,
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 42,),
                       Row(
                         children: [
                           Expanded(
                             flex: 5,
                             child: RoundedInputField(
-                              hintText: 'Booking Station',
+                              label: StringConstants.enterOrp,
+                              hintText: StringConstants.enterOrp,
                               keyboardType: TextInputType.name,
-                              type: StringConstants.name,
+                              type: StringConstants.username,
                             ),
                           ),
                           SizedBox(
@@ -537,159 +575,304 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                           Expanded(
                             flex: 5,
                             child: RoundedInputField(
-                              hintText: 'Given By',
+                              label: StringConstants.enterBilling,
+                              hintText: StringConstants.enterBilling,
                               keyboardType: TextInputType.name,
-                              type: StringConstants.name,
+                              type: StringConstants.username,
                             ),
                           ),
                         ],
                       ),
+                      SizedBox(height: 42,),
+                      RoundedInputField(
+                        label: StringConstants.enterOrpMobile,
+                        hintText: StringConstants.enterOrpMobile,
+                        keyboardType: TextInputType.name,
+                        type: StringConstants.username,
+                      ),
+                      SizedBox(height: 42,),
+                      RoundedInputField(
+                        label: StringConstants.enterExportTo,
+                        hintText: StringConstants.enterExportTo,
+                        keyboardType: TextInputType.name,
+                        type: StringConstants.username,
+                      ),
+                      SizedBox(height: 42,),
+                      RoundedInputField(
+                        label: StringConstants.enterRemark,
+                        hintText: StringConstants.enterRemark,
+                        keyboardType: TextInputType.name,
+                        type: StringConstants.username,
+                      ),
+                      SizedBox(height: 42,),
+                      RoundedInputField(
+                        label: StringConstants.enterDetailedRemark,
+                        hintText: StringConstants.enterDetailedRemark,
+                        keyboardType: TextInputType.name,
+                        type: StringConstants.username,
+                      ),
+                      SizedBox(height: 20,),
                       Row(
                         children: [
-                          Expanded(
-                            flex: 5,
-                            child: RoundedInputField(
-                              hintText: 'Enter ORP',
-                              keyboardType: TextInputType.name,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child:RoundedInputField(
-                              hintText: 'Enter Billing',
-                              keyboardType: TextInputType.name,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                        ],
-                      ),
-                      RoundedInputField(
-                        hintText: 'Enter ORP Mobile',
-                        keyboardType: TextInputType.name,
-                        type: StringConstants.name,
-                      ),
-                      RoundedInputField(
-                        hintText: 'Enter Export To',
-                        keyboardType: TextInputType.name,
-                        type: StringConstants.name,
-                      ),
-                      RoundedInputField(
-                        hintText: 'Enter Remark',
-                        keyboardType: TextInputType.name,
-                        type: StringConstants.name,
-                      ),
-                      RoundedInputField(
-                        hintText: 'Enter Detailed Remark',
-                        keyboardType: TextInputType.name,
-                        type: StringConstants.name,
-                      ),
-                      Row(
-                        children: [
-                          const Text('Article Wise'),
+                          const Text(StringConstants.articleWise),
                           const SizedBox(
                             width: 10,
                           ),
                           Checkbox(
-                              value: value,
+                              value: _value,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  this.value = value!;
+                                  _value = value!;
                                 });
                               }),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: RoundedInputField(
-                              hintText: 'Enter Design',
-                              keyboardType: TextInputType.name,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: RoundedInputField(
-                              hintText: 'Enter Size',
-                              maxLength: 10,
-                              keyboardType: TextInputType.name,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child:RoundedInputField(
-                              hintText: 'Enter Color',
-                              keyboardType: TextInputType.name,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: RoundedInputField(
-                              hintText: 'Enter Pcs',
-                              keyboardType: TextInputType.number,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: RoundedInputField(
-                              hintText: 'Enter Rate',
-                              keyboardType: TextInputType.number,
-                              type: StringConstants.name,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: Container(
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.white),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Color(0xFF2A2829)),
-                                    shape: MaterialStateProperty.all<
-                                            RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            side: BorderSide(
-                                                color: Color(0xFF2A2829))))),
-                                onPressed: () {},
-                                child: Text('ADD'),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       const SizedBox(
-                        height: 20,
+                        height: 32,
                       ),
+                      // Row(
+                      //   children: [
+                      //     Expanded(
+                      //         child: SizedBox(
+                      //       height: 40,
+                      //       child: TextField(
+                      //         decoration: InputDecoration(
+                      //             border: OutlineInputBorder(
+                      //               borderRadius: BorderRadius.circular(20),
+                      //               borderSide: BorderSide(
+                      //                 color: ColorConstants.textDark,
+                      //                 width: 1.0,
+                      //               ),
+                      //             ),
+                      //             labelText: StringConstants.enterDesign),
+                      //       ),
+                      //     )),
+                      //     const SizedBox(
+                      //       width: 5,
+                      //     ),
+                      //     Expanded(
+                      //         child: SizedBox(
+                      //       height: 40,
+                      //       child: TextField(
+                      //         decoration: InputDecoration(
+                      //             border: OutlineInputBorder(
+                      //               borderRadius: BorderRadius.circular(20),
+                      //               borderSide: BorderSide(
+                      //                 color: ColorConstants.textDark,
+                      //                 width: 1.0,
+                      //               ),
+                      //             ),
+                      //             labelText: StringConstants.enterSize),
+                      //       ),
+                      //     )),
+                      //     const SizedBox(
+                      //       width: 5,
+                      //     ),
+                      //     Expanded(
+                      //         child: SizedBox(
+                      //       height: 40,
+                      //       child: TextField(
+                      //         decoration: InputDecoration(
+                      //             border: OutlineInputBorder(
+                      //               borderRadius: BorderRadius.circular(20),
+                      //               borderSide: BorderSide(
+                      //                 color: ColorConstants.textDark,
+                      //                 width: 1.0,
+                      //               ),
+                      //             ),
+                      //             labelText: StringConstants.enterColor),
+                      //       ),
+                      //     )),
+                      //     const SizedBox(
+                      //       width: 5,
+                      //     ),
+                      //     Expanded(
+                      //         child: SizedBox(
+                      //       height: 40,
+                      //       child: TextField(
+                      //         decoration: InputDecoration(
+                      //             border: OutlineInputBorder(
+                      //               borderRadius: BorderRadius.circular(20),
+                      //               borderSide: BorderSide(
+                      //                 color: ColorConstants.textDark,
+                      //                 width: 1.0,
+                      //               ),
+                      //             ),
+                      //             labelText: StringConstants.enterPcs),
+                      //       ),
+                      //     )),
+                      //     const SizedBox(
+                      //       width: 5,
+                      //     ),
+                      //     Expanded(
+                      //         child: SizedBox(
+                      //       height: 40,
+                      //       child: TextField(
+                      //         decoration: InputDecoration(
+                      //             border: OutlineInputBorder(
+                      //               borderRadius: BorderRadius.circular(20),
+                      //               borderSide: BorderSide(
+                      //                 color: ColorConstants.textDark,
+                      //                 width: 1.0,
+                      //               ),
+                      //             ),
+                      //             labelText: StringConstants.enterRate),
+                      //       ),
+                      //     )),
+                      //   ],
+                      // ),
+                      // const SizedBox(
+                      //   height: 20,
+                      // ),
+                      // RoundedButton(
+                      //     text: StringConstants.add,
+                      //     btnColor: ColorConstants.black,
+                      //     btnWidth: MediaQuery.of(context).size.width / 10,
+                      //     press: () {
+                      //       // Navigator.push(context, MaterialPageRoute(
+                      //       //     builder: (BuildContext context) {
+                      //       //       return const OrderNewEntry();
+                      //       //     }));
+                      //     }),
+                      SizedBox(
+                        height: 30,
+                      ),
+
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 5,
+                                child: RoundedInputField(
+                                  controller: designController,
+                                  label: StringConstants.enterDesign,
+                                  hintText: StringConstants.enterDesign,
+                                  keyboardType: TextInputType.name,
+                                  type: StringConstants.username,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: RoundedInputField(
+                                  controller: sizeController,
+                                  label: StringConstants.enterSize,
+                                  hintText: StringConstants.enterSize,
+                                  keyboardType: TextInputType.name,
+                                  type: StringConstants.username,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 42,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 5,
+                                child: RoundedInputField(
+                                  controller: colorController,
+                                  label: StringConstants.enterColor,
+                                  hintText: StringConstants.enterColor,
+                                  keyboardType: TextInputType.name,
+                                  type: StringConstants.username,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: RoundedInputField(
+                                  controller: pcsController,
+                                  label: StringConstants.enterPcs,
+                                  hintText: StringConstants.enterPcs,
+                                  keyboardType: TextInputType.number,
+                                  type: StringConstants.username,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 42,
+                          ),
+
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 5,
+                                child: RoundedInputField(
+                                  controller: rateController,
+                                  label: StringConstants.enterRate,
+                                  hintText: StringConstants.enterRate,
+                                  keyboardType: TextInputType.number,
+                                  type: StringConstants.username,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                flex: 5,
+                                child: Container(
+                                    child: RoundedButton(
+                                        text: StringConstants.add,
+                                        btnColor: ColorConstants.black,
+                                        btnWidth: 300,
+                                        height: 45,
+                                        press: () {
+                                          // final article = ArticleWise(designController.text, sizeController.text, colorController.text, pcsController.text, rateController.text );
+                                          // setState(() {
+
+                                          // });
+                                        })
+                                  // ElevatedButton(
+                                  //   style: ButtonStyle(
+                                  //       foregroundColor:
+                                  //           MaterialStateProperty.all<Color>(
+                                  //               Colors.white),
+                                  //       backgroundColor:
+                                  //           MaterialStateProperty.all<Color>(
+                                  //               Color(0xFF2A2829)),
+                                  //       shape: MaterialStateProperty.all<
+                                  //               RoundedRectangleBorder>(
+                                  //           RoundedRectangleBorder(
+                                  //               borderRadius:
+                                  //                   BorderRadius.circular(5),
+                                  //               side: BorderSide(
+                                  //                   color: Color(0xFF2A2829))))),
+                                  //   onPressed: () {},
+                                  //   child: Text(StringConstants.add),
+                                  // ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          ListView.builder(itemBuilder: (ctx,index){
+                            return ListTile(
+                              title: Row(
+                                children: [
+                                  Text(article[index].design ??'', style: TextStyle(fontSize: 14),),
+                                  Text(article[index].size ??'', style: TextStyle(fontSize: 14) ),
+                                  Text(article[index].color ??'', style: TextStyle(fontSize: 14)),
+                                  Text(article[index].pcs ??'',style: TextStyle(fontSize: 14)),
+                                  Text(article[index].rate ??'',style: TextStyle(fontSize: 14)),
+                                ],
+                              ),
+                            );
+                          },
+                            itemCount: article.length,
+                          )
+                        ],
+                      ),
+
                       Column(
                         children: [
                           DataTable(columns: const [
@@ -710,7 +893,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                             ]),
                           ]),
                           const SizedBox(
-                            height: 20,
+                            height: 42,
                           ),
                         ],
                       ),
@@ -721,7 +904,7 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text(
-                                'Upload Document',
+                                StringConstants.uploadDocument,
                                 style: TextStyle(fontSize: 16),
                               ),
                               ListView.builder(
@@ -744,14 +927,15 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(
-                                  Color(0xFF2C2C2C)),
+                                  const Color(0xFF2C2C2C)),
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Color(0xFE0E0E0)),
+                                  const Color(0xFE0E0E0)),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
-                                      side: BorderSide(color: Colors.grey)))),
+                                      side: const BorderSide(
+                                          color: Colors.grey)))),
                           onPressed: () async {
                             result = await FilePicker.platform
                                 .pickFiles(allowMultiple: true);
@@ -763,48 +947,62 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
                               });
                             }
                           },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.upload_file_rounded),
-                              Text('Upload Document',style: TextStyle(fontSize: 14),),
+                              Text(
+                                StringConstants.uploadDocument,
+                                style: TextStyle(fontSize: 14),
+                              ),
                             ],
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        child:RoundedButton(
-                            text: "Submit",
+                        child: RoundedButton(
+                            text: StringConstants.submitTxt,
                             btnColor: ColorConstants.primaryColor,
                             btnWidth: 300,
-                            press: () async{
+                            press: () {
                               if (_formKey.currentState?.validate() == true) {
-                                if(caseController.toString() == ''){
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(content: Text('Alert! Please enter Phone Number')));
-                                }
-                                else{
-                                  // Navigator.push(context, MaterialPageRoute(
-                                  //                   builder: (BuildContext context) {
-                                  //                 return const OtpLogin();
-                                  //               }));}
-                                  // String result = await phoneNumberController.toString();
-                                  // if(result == 'true'){
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (BuildContext context) {
-                                        return const HomePage();
-                                      }));
-                                }
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                  return const HomePage();
+                                }));
                               }
-                            }
-                        ),
+                            }),
+                        // RoundedButton(
+                        //     text: StringConstants.submitTxt,
+                        //     btnColor: ColorConstants.primaryColor,
+                        //     btnWidth: 300,
+                        //     press: () async {
+                        //       if (_formKey.currentState?.validate() == true) {
+                        //         if (caseController.toString() == '') {
+                        //           ScaffoldMessenger.of(context).showSnackBar(
+                        //               SnackBar(
+                        //                   content: Text(
+                        //                       'Alert! Please enter Phone Number')));
+                        //         } else {
+                        //           // Navigator.push(context, MaterialPageRoute(
+                        //           //                   builder: (BuildContext context) {
+                        //           //                 return const OtpLogin();
+                        //           //               }));}
+                        //           // String result = await phoneNumberController.toString();
+                        //           // if(result == 'true'){
+                        //           Navigator.push(context, MaterialPageRoute(
+                        //               builder: (BuildContext context) {
+                        //             return const HomePage();
+                        //           }));
+                        //         }
+                        //       }
+                        //     }),
                       ),
-
                       // SizedBox(
                       //   height: 50,
                       //   width: MediaQuery.of(context).size.width,
@@ -838,5 +1036,4 @@ class _OrderNewEntryState extends State<OrderNewEntry> {
       ),
     );
   }
-
 }

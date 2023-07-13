@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:radhey_knit_llp/component/roundInputField.dart';
 import 'package:radhey_knit_llp/screens/registrationForm.dart';
 import 'package:radhey_knit_llp/utils/lotOfThemes.dart';
@@ -20,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final preference = AppPreferences();
   TextEditingController phoneNumberController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 RoundedInputField(
                   controller: phoneNumberController,
-                  hintText: 'Enter Register Phone Number',
+                  hintText: StringConstants.enterRegisterPhoneNumber,
                   maxLength: 10,
                   counterText: '',
                   keyboardType: TextInputType.phone,
@@ -84,31 +87,24 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child:RoundedButton(
-                          text: "Submit",
-                          btnColor: ColorConstants.primaryColor,
-                          btnWidth: 300,
-                          press: () async{
-                            if (_formKey.currentState?.validate() == true) {
-                              if(phoneNumberController.toString() == ''){
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(content: Text('Alert! Please enter Phone Number')));
-                              }
-                              else{
-                              // Navigator.push(context, MaterialPageRoute(
-                              //                   builder: (BuildContext context) {
-                              //                 return const OtpLogin();
-                              //               }));}
-                              // String result = await phoneNumberController.toString();
-                              // if(result == 'true'){
-                                Navigator.push(context, MaterialPageRoute(
-                                                      builder: (BuildContext context) {
-                                                    return const OtpLogin();
-                                                  }));
-                              }
-                            }
+                  child: RoundedButton(
+                      text: StringConstants.submitTxt,
+                      btnColor: ColorConstants.primaryColor,
+                      btnWidth: 300,
+                      press: () async {
+                        if (_formKey.currentState?.validate() == true) {
+                          if (phoneNumberController.toString() == '') {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content:
+                                    Text('Alert! Please enter Phone Number')));
+                          } else {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return const OtpLogin();
+                            }));
                           }
-                        ),
+                        }
+                      }),
                 ),
                 // SizedBox(
                 //   height: 50,
@@ -148,12 +144,12 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                'Need an account?',
+                StringConstants.needAnAccount,
                 style: TextStyle(fontSize: 16),
               ),
               TextButton(
                 child: const Text(
-                  'Sign Up',
+                  StringConstants.signUp,
                   style: TextStyle(fontSize: 16),
                 ),
                 onPressed: () {

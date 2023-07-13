@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ColorConstants {
   // #- 0xFF     010066-dark, light -00349a
   static Color background = const Color(0xFFFF0000);
-  static Color primaryColor = const Color(0xFFFF0000);
+  static Color primaryColor = const Color(0xFFFF4A52);
   static Color secondaryColor = const Color(0xFFFF0000);
   static Color yellowColor = const Color(0xFFFF0000);
   static Color mainBgColor = const Color(0xFFF5F5F5);

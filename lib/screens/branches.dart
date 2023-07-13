@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:radhey_knit_llp/screens/brancheDetails.dart';
 
+import '../constants/colorConstants.dart';
+import '../constants/stringConstant.dart';
+
 class Branches extends StatelessWidget {
   const Branches({super.key});
 
@@ -8,7 +11,7 @@ class Branches extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -19,8 +22,8 @@ class Branches extends StatelessWidget {
             size: 22,
           ),
         ),
-        title: const Text(
-          'Branches',
+        title: Text(
+          StringConstants.branches,
           style: TextStyle(color: Colors.white, fontSize: 22),
         ),
       ),

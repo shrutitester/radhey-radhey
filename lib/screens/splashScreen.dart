@@ -9,7 +9,10 @@ class SplashScreen extends StatelessWidget {
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: Image.asset('assets/Splashscreen.png',fit: BoxFit.fill,),
+        child: Image.asset(
+          'assets/Splashscreen.png',
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

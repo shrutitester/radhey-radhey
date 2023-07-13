@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:radhey_knit_llp/constants/stringConstant.dart';
+
+import '../constants/colorConstants.dart';
 
 class BrancheDetails extends StatefulWidget {
   const BrancheDetails({super.key});
@@ -12,7 +15,7 @@ class _BrancheDetailsState extends State<BrancheDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -24,7 +27,7 @@ class _BrancheDetailsState extends State<BrancheDetails> {
           ),
         ),
         title: const Text(
-          'Branche Details',
+          StringConstants.brancheDetails,
           style: TextStyle(color: Colors.white, fontSize: 22),
         ),
       ),
@@ -33,7 +36,7 @@ class _BrancheDetailsState extends State<BrancheDetails> {
         child: ListView(
           children: [
             const Text(
-              'ANAPURNA SALES(DELHI-HO)',
+              StringConstants.anapurnaSales,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
@@ -51,11 +54,11 @@ class _BrancheDetailsState extends State<BrancheDetails> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Firm Address:'),
+                    Text(StringConstants.firmAddress),
                     SizedBox(
                       height: 30,
                     ),
-                    Text('Tel. No.:')
+                    Text(StringConstants.telNo)
                   ],
                 ),
               ),
@@ -64,7 +67,7 @@ class _BrancheDetailsState extends State<BrancheDetails> {
               height: 20,
             ),
             const Text(
-              'CONTACT PERSON',
+              StringConstants.contactPerson,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
@@ -82,11 +85,11 @@ class _BrancheDetailsState extends State<BrancheDetails> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Branch Head:'),
+                    Text(StringConstants.branchHead),
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Contact no.:')
+                    Text(StringConstants.contactNo)
                   ],
                 ),
               ),

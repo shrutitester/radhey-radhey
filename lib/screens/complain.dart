@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../component/roundButton.dart';
+import '../component/roundInputField.dart';
+import '../constants/colorConstants.dart';
+import '../constants/stringConstant.dart';
 import 'checkCreditLimit.dart';
 
 class Complain extends StatefulWidget {
@@ -12,7 +16,6 @@ class Complain extends StatefulWidget {
 class _ComplainState extends State<Complain> {
   final _formKey = GlobalKey<FormState>();
   String? _chosenValue;
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +31,10 @@ class _ComplainState extends State<Complain> {
               size: 22,
             )),
         title: const Text(
-          'Complain',
+          StringConstants.complain,
           style: TextStyle(color: Colors.white, fontSize: 22),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 17, top: 16, right: 15.0),
@@ -42,20 +45,19 @@ class _ComplainState extends State<Complain> {
               child: ListView(
                 children: [
                   const Text(
-                    'Sales',
+                    StringConstants.sales,
                     style: TextStyle(fontSize: 12),
                   ),
-                  SizedBox(height: 8,),
+                  SizedBox(
+                    height: 8,
+                  ),
                   Container(
                     height: 50,
                     width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: 16,right: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16),
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black,
-                            width: 1),
-                        borderRadius:
-                        BorderRadius.circular(5)
-                    ),
+                        border: Border.all(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(5)),
                     child: DropdownButton<String>(
                         icon: Icon(Icons.keyboard_arrow_down),
                         iconSize: 36,
@@ -64,13 +66,12 @@ class _ComplainState extends State<Complain> {
                         value: _chosenValue,
                         style: TextStyle(color: Colors.black),
                         items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                            .map<DropdownMenuItem<String>>(
-                                (String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                         hint: Text('Select Sales',
                             style: TextStyle(
                               fontSize: 16,
@@ -81,51 +82,36 @@ class _ComplainState extends State<Complain> {
                           });
                         }),
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    'Reference No',
+                    StringConstants.refernceNo,
                     style: TextStyle(fontSize: 12),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Reference No',
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
+                  RoundedInputField(
+                    hintText: StringConstants.enterReferenceNo,
+                    keyboardType: TextInputType.number,
+                    type: StringConstants.username,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   const Text(
-                    'Your Complaint',
+                    StringConstants.yourComplaint,
                     style: TextStyle(fontSize: 12),
                   ),
                   const SizedBox(
                     height: 8,
                   ),
-                  TextFormField(
+                  RoundedInputField(
+                    hintText: StringConstants.pleaseEnterYourCompaintHere,
                     maxLines: 3,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Please Enter Your Complaint Here",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
+                    keyboardType: TextInputType.number,
+                    type: StringConstants.username,
                   ),
                 ],
               ),
@@ -133,34 +119,44 @@ class _ComplainState extends State<Complain> {
             Positioned(
                 bottom: 29,
                 child: SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color(0xFFFF4A52)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                    side:
-                                        const BorderSide(color: Colors.red)))),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return const CheckCreditLimit();
-                        }));
-                      }
-                    },
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                ))
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    child: RoundedButton(
+                        text: StringConstants.submitTxt,
+                        btnColor: ColorConstants.primaryColor,
+                        btnWidth: 300,
+                        press: () {
+                          // Navigator.push(context, MaterialPageRoute(
+                          //     builder: (BuildContext context) {
+                          //       return const OrderNewEntry();
+                          //     }));
+                        })
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //       foregroundColor:
+                    //           MaterialStateProperty.all<Color>(Colors.white),
+                    //       backgroundColor: MaterialStateProperty.all<Color>(
+                    //           const Color(0xFFFF4A52)),
+                    //       shape:
+                    //           MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //               RoundedRectangleBorder(
+                    //                   borderRadius: BorderRadius.circular(5),
+                    //                   side:
+                    //                       const BorderSide(color: Colors.red)))),
+                    //   onPressed: () {
+                    //     if (_formKey.currentState!.validate()) {
+                    //       Navigator.push(context,
+                    //           MaterialPageRoute(builder: (BuildContext context) {
+                    //         return const CheckCreditLimit();
+                    //       }));
+                    //     }
+                    //   },
+                    //   child: const Text(
+                    //     'Submit',
+                    //     style: TextStyle(fontSize: 18),
+                    //   ),
+                    // ),
+                    ))
           ],
         ),
       ),

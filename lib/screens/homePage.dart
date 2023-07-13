@@ -7,6 +7,9 @@ import 'package:radhey_knit_llp/screens/loginPage.dart';
 import 'package:radhey_knit_llp/screens/orderDetails.dart';
 import 'package:radhey_knit_llp/screens/salesReport.dart';
 
+import '../constants/colorConstants.dart';
+import '../constants/stringConstant.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -49,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                                 const Expanded(
                                     flex: 8,
                                     child: Text(
-                                      'Welcome',
+                                      StringConstants.welcome,
                                       style: TextStyle(
                                           fontSize: 20, color: Colors.white),
                                     )),
@@ -58,20 +61,20 @@ class _HomePageState extends State<HomePage> {
                                     child: SizedBox(
                                         height: 26.5,
                                         width: 30.29,
-                                        child:
-                                            InkWell(
-                                                onTap: (){
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
+                                        child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
                                                           const LoginPage()));
-                                                },
-                                                child: Image.asset('assets/logout.png'))))
+                                            },
+                                            child: Image.asset(
+                                                'assets/logout.png'))))
                               ],
                             ),
                             Text(
-                              'ANAPURNA SALES',
+                              StringConstants.appName,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                   fontSize: 24,
@@ -116,14 +119,17 @@ class _HomePageState extends State<HomePage> {
                                               style: TextStyle(
                                                   fontSize: 33,
                                                   fontWeight: FontWeight.w400,
-                                                  color: Colors.red),
+                                                  color: ColorConstants
+                                                      .primaryColor),
                                             ),
                                           ],
                                         ),
                                         Text(
                                           'Show More',
                                           style: TextStyle(
-                                              fontSize: 14, color: Colors.red),
+                                              fontSize: 14,
+                                              color:
+                                                  ColorConstants.primaryColor),
                                         ),
                                       ],
                                     ),
@@ -168,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Ledger',
+                                                StringConstants.ledger,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -207,7 +213,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Sales Reports',
+                                                StringConstants.salesReports,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -246,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Pending Order',
+                                                StringConstants.pendingOrder,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -281,7 +287,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Couries',
+                                                StringConstants.courier,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -326,7 +332,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Order Booking',
+                                                StringConstants.orderBooking,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -367,7 +373,8 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Check Credit Limit',
+                                                StringConstants
+                                                    .checkCreditLimit,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -412,7 +419,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Branch',
+                                                StringConstants.branch,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -453,7 +460,7 @@ class _HomePageState extends State<HomePage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 21.0),
                                               child: Text(
-                                                'Complain',
+                                                StringConstants.complain,
                                                 style: TextStyle(fontSize: 14),
                                               ),
                                             )
@@ -490,7 +497,7 @@ class _HomePageState extends State<HomePage> {
                                           padding:
                                               EdgeInsets.only(bottom: 21.0),
                                           child: Text(
-                                            'Contact Us',
+                                            StringConstants.contactUs,
                                             style: TextStyle(fontSize: 14),
                                           ),
                                         )
@@ -503,402 +510,7 @@ class _HomePageState extends State<HomePage> {
                           ))
                     ],
                   ),
-                )
-                // ListView(
-                //   children: [
-                //     Row(
-                //       children: [const Expanded(flex: 8,child: Text('Welcome',style:TextStyle(fontSize: 20, color: Colors.white),)),Expanded(flex: 1,child: SizedBox(height: 26.5,width: 30.29,
-                //                 child: Image.asset('assets/logout.png')))],),
-                //     const Text('ANAPURNA SALES',style: TextStyle(fontSize: 24,color: Colors.white,fontWeight: FontWeight.w500),),const SizedBox(height: 33,),
-                //     Card(color: Colors.white,elevation: 2,child: Stack(
-                //           children: [
-                //             SizedBox(
-                //               child: Image.asset(
-                //                 'assets/card_background.png',
-                //                 fit: BoxFit.fitWidth,
-                //               ),
-                //             ),
-                //             const Positioned(
-                //               top: 21,
-                //               left: 14,
-                //               right: 14,
-                //               bottom: 21,
-                //               child: Column(
-                //                 crossAxisAlignment: CrossAxisAlignment.start,
-                //                 children: [
-                //                   Text(
-                //                     'Current Outstanding',
-                //                     style: TextStyle(fontSize: 18),
-                //                   ),
-                //                   Row(
-                //                     children: [
-                //                       Text(
-                //                         'Rs.',
-                //                         style: TextStyle(fontSize: 18),
-                //                       ),
-                //                       Text(
-                //                         '365287.0',
-                //                         style: TextStyle(
-                //                             fontSize: 33,
-                //                             fontWeight: FontWeight.w400,
-                //                             color: Colors.red),
-                //                       ),
-                //                     ],
-                //                   ),
-                //                   Text(
-                //                     'Show More',
-                //                     style: TextStyle(
-                //                         fontSize: 14, color: Colors.red),
-                //                   ),
-                //                 ],
-                //               ),
-                //             )
-                //           ],
-                //         )),
-                //     Row(
-                //       children: [
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => const Ledger()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child: Image.asset('assets/ledger.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Ledger',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //         const SizedBox(
-                //           width: 16,
-                //         ),
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => const SalesReport()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                         left: 53.0, top: 21, right: 53),
-                //                     child:
-                //                         Image.asset('assets/salesreport.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Sales Reports',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //     const SizedBox(
-                //       height: 16,
-                //     ),
-                //     Row(
-                //       children: [
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {},
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child:
-                //                         Image.asset('assets/pending order.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Pending Order',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //         const SizedBox(
-                //           width: 16,
-                //         ),
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {},
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child: Image.asset('assets/Couries.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Couries',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //     const SizedBox(
-                //       height: 16,
-                //     ),
-                //     Row(
-                //       children: [
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => const OrderDetails()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child:
-                //                         Image.asset('assets/Order Booking.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Order Booking',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //         const SizedBox(
-                //           width: 16,
-                //         ),
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) =>
-                //                           const CheckCreditLimit()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child: Image.asset(
-                //                         'assets/Check credit limit icon.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Check Credit Limit',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //     const SizedBox(
-                //       height: 16,
-                //     ),
-                //     Row(
-                //       children: [
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => const Branches()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child: Image.asset('assets/branch.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Branch',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //         const SizedBox(
-                //           width: 16,
-                //         ),
-                //         Expanded(
-                //           child: InkWell(
-                //             onTap: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) => const Complain()));
-                //             },
-                //             child: Card(
-                //               child: Column(
-                //                 children: [
-                //                   Padding(
-                //                     padding: const EdgeInsets.only(
-                //                       left: 53.0,
-                //                       top: 21,
-                //                       right: 53,
-                //                     ),
-                //                     child: Image.asset('assets/Complain.png'),
-                //                   ),
-                //                   const SizedBox(
-                //                     height: 10,
-                //                   ),
-                //                   const Padding(
-                //                     padding:
-                //                         EdgeInsets.only(bottom: 21.0),
-                //                     child: Text(
-                //                       'Complain',
-                //                       style: TextStyle(fontSize: 14),
-                //                     ),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //     const SizedBox(
-                //       height: 16,
-                //     ),
-                //     SizedBox(
-                //       child: InkWell(
-                //         onTap: () {},
-                //         child: Card(
-                //           child: Column(
-                //             children: [
-                //               Padding(
-                //                 padding: const EdgeInsets.only(
-                //                   left: 53.0,
-                //                   top: 21,
-                //                   right: 53,
-                //                 ),
-                //                 child: Image.asset('assets/Contact Us.png'),
-                //               ),
-                //               const SizedBox(
-                //                 height: 10,
-                //               ),
-                //               const Padding(
-                //                 padding: EdgeInsets.only(bottom: 21.0),
-                //                 child: Text(
-                //                   'Contact Us',
-                //                   style: TextStyle(fontSize: 14),
-                //                 ),
-                //               )
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // )
-                )
+                ))
           ],
         ));
   }

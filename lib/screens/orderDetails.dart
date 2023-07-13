@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:radhey_knit_llp/constants/stringConstant.dart';
 
+import '../constants/colorConstants.dart';
+
 class OrderDetails extends StatefulWidget {
   const OrderDetails({super.key});
 
@@ -38,10 +40,10 @@ class _OrderDetailsState extends State<OrderDetails> {
           ),
         ),
         title: const Text(
-          'Order Details',
+          StringConstants.orderDetails,
           style: TextStyle(fontSize: 22, color: Colors.white),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: ColorConstants.primaryColor,
         actions: [
           Padding(
             padding: const EdgeInsets.only(bottom: 14.0),
@@ -64,7 +66,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                           child: Scaffold(
                             appBar: AppBar(
                               title: const Text(
-                                'Filter',
+                                StringConstants.filter,
                                 style: TextStyle(color: Colors.white),
                               ),
                               backgroundColor: Colors.red,
@@ -85,32 +87,42 @@ class _OrderDetailsState extends State<OrderDetails> {
                                   Row(
                                     children: [
                                       Expanded(
-                                        child:                   Container(
+                                        child: Container(
                                           height: 50,
-                                          width: MediaQuery.of(context).size.width,
-                                          padding: const EdgeInsets.only(left: 16,right: 16),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          padding: const EdgeInsets.only(
+                                              left: 16, right: 16),
                                           decoration: BoxDecoration(
-                                              border: Border.all(color: Colors.black,
+                                              border: Border.all(
+                                                  color: Colors.black,
                                                   width: 1),
                                               borderRadius:
-                                              BorderRadius.circular(5)
-                                          ),
+                                                  BorderRadius.circular(5)),
                                           child: DropdownButton<String>(
-                                              icon: Icon(Icons.keyboard_arrow_down),
+                                              icon: Icon(
+                                                  Icons.keyboard_arrow_down),
                                               iconSize: 36,
                                               isExpanded: true,
                                               underline: SizedBox(),
                                               value: _chosenValue1,
-                                              style: TextStyle(color: Colors.black),
-                                              items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                                  .map<DropdownMenuItem<String>>(
-                                                      (String value) {
-                                                    return DropdownMenuItem<String>(
-                                                      value: value,
-                                                      child: Text(value),
-                                                    );
-                                                  }).toList(),
-                                              hint: const Text('Select Customer',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                              items: <String>[
+                                                'ABC',
+                                                'XYZ',
+                                                'OPQ',
+                                                'STU'
+                                              ].map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                                return DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value),
+                                                );
+                                              }).toList(),
+                                              hint: const Text(
+                                                  StringConstants
+                                                      .selectCustomer,
                                                   style: TextStyle(
                                                     fontSize: 16,
                                                   )),
@@ -120,36 +132,47 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                 });
                                               }),
                                         ),
-
                                       ),
-                                      const SizedBox(width: 15,),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
                                       Expanded(
-                                        child:                   Container(
+                                        child: Container(
                                           height: 50,
-                                          width: MediaQuery.of(context).size.width,
-                                          padding: const EdgeInsets.only(left: 16,right: 16),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          padding: const EdgeInsets.only(
+                                              left: 16, right: 16),
                                           decoration: BoxDecoration(
-                                              border: Border.all(color: Colors.black,
+                                              border: Border.all(
+                                                  color: Colors.black,
                                                   width: 1),
                                               borderRadius:
-                                              BorderRadius.circular(5)
-                                          ),
+                                                  BorderRadius.circular(5)),
                                           child: DropdownButton<String>(
-                                              icon: Icon(Icons.keyboard_arrow_down),
+                                              icon: Icon(
+                                                  Icons.keyboard_arrow_down),
                                               iconSize: 36,
                                               isExpanded: true,
                                               underline: SizedBox(),
                                               value: _chosenValue2,
-                                              style: TextStyle(color: Colors.black),
-                                              items: <String>['ABC', 'XYZ', 'OPQ', 'STU']
-                                                  .map<DropdownMenuItem<String>>(
-                                                      (String value) {
-                                                    return DropdownMenuItem<String>(
-                                                      value: value,
-                                                      child: Text(value),
-                                                    );
-                                                  }).toList(),
-                                              hint: const Text('Select Supplier',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                              items: <String>[
+                                                'ABC',
+                                                'XYZ',
+                                                'OPQ',
+                                                'STU'
+                                              ].map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                                return DropdownMenuItem<String>(
+                                                  value: value,
+                                                  child: Text(value),
+                                                );
+                                              }).toList(),
+                                              hint: const Text(
+                                                  StringConstants
+                                                      .selectSupplier,
                                                   style: TextStyle(
                                                     fontSize: 16,
                                                   )),
@@ -159,11 +182,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                                                 });
                                               }),
                                         ),
-
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 12,),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
                                   Row(
                                     children: [
                                       Expanded(
@@ -178,7 +202,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           },
                                           decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
-                                            labelText: 'Date From',
+                                            labelText: StringConstants.dateFrom,
                                             suffixIcon: Icon(
                                                 Icons.calendar_today_outlined),
                                           ),
@@ -218,7 +242,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                           },
                                           decoration: const InputDecoration(
                                             border: OutlineInputBorder(),
-                                            labelText: 'Date To',
+                                            labelText: StringConstants.dateTo,
                                             suffixIcon: Icon(
                                                 Icons.calendar_today_outlined),
                                           ),
@@ -273,28 +297,58 @@ class _OrderDetailsState extends State<OrderDetails> {
                                               return ListView(
                                                 children: [
                                                   Container(
-                                                    color: Colors.red,
-                                                    width: MediaQuery.of(context).size.width,
+                                                    color: ColorConstants
+                                                        .primaryColor,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
                                                     height: 80,
                                                     child: Padding(
-                                                      padding: const EdgeInsets.all(16.0),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              16.0),
                                                       child: Row(
                                                         children: [
-
                                                           Expanded(
                                                               child: SizedBox(
-                                                                width:15,
-                                                                child: ElevatedButton(onPressed: (){},
-                                                                child: Row(
-                                                                  children: [
-                                                                    Icon(Icons.download,color: Colors.white,),
-                                                                    Text(StringConstants.downloadPdf,style: TextStyle(color: Colors.white),)
-                                                                  ],
-                                                                ),),
-                                                              )),
-                                                          SizedBox(width: 20,),
+                                                            height: 40,
+                                                            width: 40,
+                                                            child:
+                                                                ElevatedButton(
+                                                              onPressed: () {},
+                                                              child: Row(
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .download,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                  Text(
+                                                                    StringConstants
+                                                                        .downloadPdf,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          )),
+                                                          SizedBox(
+                                                            width: 20,
+                                                          ),
                                                           Expanded(
-                                                          child: Icon(Icons.cancel, color: Colors.white,)),
+                                                              child: IconButton(
+                                                            color: Colors.white,
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            icon: Icon(
+                                                                Icons.cancel),
+                                                          )),
                                                         ],
                                                       ),
                                                     ),
